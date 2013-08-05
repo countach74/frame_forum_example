@@ -1,0 +1,7 @@
+- from 'tim/form.html' import input
+
+
+form(method="post", action="/login")
+  +input('text', {'name': 'username', 'label': 'User'})
+  +input('password', {'name': 'password', 'label': 'Password'})
+  +input('submit', {'value': 'Login'})

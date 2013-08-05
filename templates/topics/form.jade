@@ -1,0 +1,8 @@
+- from 'tim/form.html' import input, textarea
+
+
+form(method='post', action='/forumgroups/%s/forums/%s/topics' % (forum.forum_group.slug, forum.slug))
+  - set topic = topic or {}
+  +input('text', {'name': 'title', 'label': 'Title', 'value': topic.title})
+  +textarea({'name': 'content', 'label': 'Content', 'value': topic.posts.0.content if topic else ''})
+  +input('submit', {'value': '%s Topic' % ('Update' if topic else 'Create')})

@@ -1,0 +1,25 @@
+doctype 5
+html(lang="en")
+  head
+    block head
+      title= title
+      link(rel="stylesheet", type="text/css", href="/styles/global.css")
+      script(type="text/javascript", src="/scripts/atom.min.js")
+      script(type="text/javascript", src="/scripts/require.min.js")
+      script.
+        require.config({
+          baseUrl: '/scripts/lib',
+          paths: {}
+        });
+  body
+    #main-container
+      #navbar
+        ul
+          li: a(href='/users') Users
+          if not session.user
+            li: a(href="/users/new") Register
+            li: a(href="/login") Login
+      #content
+        block content
+      #footer
+        block footer

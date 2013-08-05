@@ -1,0 +1,7 @@
+- from 'tim/form.html' import input
+
+
+form(method='post', action='/forumgroups/%s' % forum_group.id if forum_group else '/forumgroups')
+  - set forum_group = forum_group or {}
+  +input('text', {'name': 'name', 'label': 'Forum Group Name', 'value': forum_group.id})
+  +input('submit', {'value': 'Create Forum Group'})

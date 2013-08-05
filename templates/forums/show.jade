@@ -1,0 +1,26 @@
+extends layout.jade
+- from "tim/form.html" import input
+
+block content
+  h3= forum.name
+
+  table#topics
+    thead
+      tr
+        td Topic
+        td Author
+        td Last Activity
+    tbody
+      if forum.topics
+        for topic in forum.topics
+          tr
+            td: a(href='/forumgroups/%s/forums/%s/topics/%s' % (
+              forum.forum_group.slug, forum.slug, topic.slug))= topic.title
+            td= topic.author.name
+            td 'nothing yet'
+      else
+        tr: td(colspan=3) No topics yet in this forum
+
+  if 'user' in session:
+    h4 Create New Topic
+    include topics/form.jade

@@ -1,0 +1,10 @@
+- from 'tim/form.html' import input
+
+form(method="post", action="/users/" + user.username if user else '/users')
+  - set user = {} if not user else user
+  +input('text', {'name': 'username', 'label': 'User Name', 'value': user.username})
+  +input('password', {'name': 'password', 'label': 'Password'})
+  +input('text', {'name': 'firstname', 'label': 'First Name', 'value': user.firstname})
+  +input('text', {'name': 'lastname', 'label': 'Last Name', 'value': user.lastname})
+  +input('email', {'name': 'email', 'label': 'Email Address', 'value': user.email})
+  +input('submit', {'value': 'Update' if user else 'Register'})

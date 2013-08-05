@@ -1,0 +1,12 @@
+extends layout.jade
+
+
+block content
+  h3 #{topic.title} (by #{topic.author.username})
+  
+  #posts
+    for post in topic.posts
+      .post
+        .content= post.content
+        .metadata
+          .author= post.author.username

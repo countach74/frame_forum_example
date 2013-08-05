@@ -1,0 +1,22 @@
+extends layout.jade
+
+
+block content
+  ul
+    if forum_groups
+      for group in forum_groups
+        li 
+          span= group.name + ' '
+          if session.user and 'admin' in session.user.groups
+            a(href='/forumgroups/%s/forums/new' % group.slug) (add new forum)
+          ul
+            if group.forums
+              for forum in group.forums
+                li: a(href='/forumgroups/%s/forums/%s' % (group.slug, forum.slug))= forum.name
+            else
+              li No forums in group
+    else
+      li No forum groups defined
+    
+  if session.user and 'admin' in session.user.groups
+    p: a(href='/forumgroups/new') Create New Forum Group
