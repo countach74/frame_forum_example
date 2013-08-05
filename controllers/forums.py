@@ -7,12 +7,19 @@ class Forums(frame.Controller):
     forum_groups = self.db.query(ForumGroup).filter_by(
       slug=forum_group_slug).outerjoin("forums").all()
       
-    print forum_groups
     return {'forum_groups': forum_groups}
 
   def show(self, forum_group_slug, slug):
-    forum = self.db.query(Forum).filter_by(slug=slug).join(
-      'forum_group').filter_by(slug=forum_group_slug).join('topics').first()
+    forum = self.db.query(Forum).filter_by(slug=slug).outerjoin(
+      'forum_group').filter_by(slug=forum_group_slug).outerjoin('topics')
+      
+    print forum
+    forum = forum.first()
+      
+    print forum_group_slug, slug
+    
+    if not forum:
+      raise frame.Error404
 
     return {'forum': forum}
     

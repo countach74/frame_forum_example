@@ -8,11 +8,11 @@ block content
         li 
           span= group.name + ' '
           if session.user and 'admin' in session.user.groups
-            a(href='/forumgroups/%s/new_forum' % group.id) (add new forum)
+            a(href='/forumgroups/%s/forums/new' % group.slug) (add new forum)
           ul
             if group.forums
               for forum in group.forums
-                li: a(href='/forums/' + forum.slug)= forum.name
+                li: a(href='/forumgroups/%s/forums/' + forum.slug)= forum.name
             else
               li No forums in group
     else
