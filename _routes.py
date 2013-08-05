@@ -6,6 +6,7 @@ routes.connect('/', 'root#index')
 routes.resource('forumgroups')
 routes.resource('forums', '/forumgroups/{forum_group_slug}/forums')
 routes.resource('topics', '/forumgroups/{forum_group_slug}/forums/{forum_slug}/topics')
+routes.resource('posts', '/forumgroups/{forum_group_slug}/forums/{forum_slug}/topics/{topic_slug}/posts')
 routes.resource('users')
 
 routes.connect('/login', 'login#get', conditions={'method': ['GET']})

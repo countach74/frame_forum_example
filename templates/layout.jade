@@ -15,6 +15,7 @@ html(lang="en")
     #main-container
       #navbar
         ul
+          li: a(href='/') Forums
           li: a(href='/users') Users
           if not session.user
             li: a(href="/users/new") Register

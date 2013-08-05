@@ -3,6 +3,10 @@ from models import User
 
 
 class Users(frame.Controller):
+  def index(self):
+    users = self.db.query(User).all()
+    return {'users': users}
+    
   def new(self):
     pass
 

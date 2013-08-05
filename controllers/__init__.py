@@ -1,1 +1,1 @@
-__all__ = ['root', 'forumgroups', 'forums', 'topics', 'users', 'login']
+__all__ = ['root', 'forumgroups', 'forums', 'topics', 'users', 'login', 'posts']

@@ -1,0 +1,27 @@
+extends layout.jade
+
+
+block content
+  h3 All Users
+  
+  table#users
+    thead
+      tr
+        td ID
+        td User Name
+        td Email
+        td First Name
+        td Last Name
+        td Groups
+    tbody
+      if users
+        for user in users
+          tr
+            td= user.id
+            td: a(href='/users/%s' % user.username)= user.username
+            td= user.email
+            td= user.firstname
+            td= user.lastname
+            td= user.groups|join(', ')
+      else
+        tr: td(colspan=6) No users found in database

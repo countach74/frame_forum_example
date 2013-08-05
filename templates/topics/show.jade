@@ -1,4 +1,5 @@
 extends layout.jade
+- from 'tim/form.html' import input, textarea
 
 
 block content
@@ -10,3 +11,16 @@ block content
         .content= post.content
         .metadata
           .author= post.author.username
+  
+  if 'user' in session
+    h4 Post Reply
+    
+    form(method='post', action='/forumgroups/%s/forums/%s/topics/%s/posts' % (
+      topic.forum.forum_group.slug,
+      topic.forum.slug,
+      topic.slug))
+    
+      +textarea({'name': 'content', 'label': 'Content'})
+      +input('submit', {'value': 'Post'})
+  else
+    a(href='/login') You must login to reply

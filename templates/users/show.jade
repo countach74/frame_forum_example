@@ -1,4 +1,26 @@
-extends layout.html
+extends layout.jade
 
 block content
-  h3= user.username
+  h3 Show User Info
+  
+  table#user-info
+    tbody
+      tr
+        td: b ID
+        td= user.id
+      tr
+        td: b User Name
+        td= user.username
+      tr
+        td: b Email
+        td= user.email
+      tr
+        td: b First Name
+        td= user.firstname
+      tr
+        td: b Last Name
+        td= user.lastname
+      tr
+        td: b Groups
+        td= user.groups|join(', ')
+        
